@@ -1,0 +1,50 @@
+<div class="user-form-cards-controls">
+    <ng-container *ngIf="!submitInProgress; else submitProgressControls">
+        <button
+        [disabled]="invalidFormsCounter || !userForms.controls.length"
+		type="button"
+		class="btn btn-primary me-2"
+		id="submit"
+		(click)="submitAllForms()"
+	>
+		Submit all forms
+	</button>
+    <span class="invalid-forms-counter" *ngIf="invalidFormsCounter">Invalid forms: {{invalidFormsCounter}}</span>
+    </ng-container>
+    <ng-template #submitProgressControls>
+        <button
+        [disabled]="invalidFormsCounter"
+		type="button"
+		class="btn btn-danger me-2"
+		id="cancelSubmit"
+		(click)="cancelSubmit()"
+	>
+		Cancel
+	</button>
+    <span>0:0{{displayedSeconds}}</span>
+    </ng-template>
+</div>
+<div class="user-form-cards-wrapper" [formGroup]="formData">
+    <ng-container formArrayName="userForms">
+        <ng-container *ngFor="let userForm of userForms.controls; let i = index">
+            <div class="user-form-card">
+                <div class="user-form-card-close" (click)="deleteUserForm(i, userForm)">x</div>
+                <form class="user-form" [formGroupName]="i">
+                    <div class="user-form-field">
+                        <app-country-field formControlName="country"></app-country-field>
+                    </div>
+                    <div class="user-form-field">
+                        <app-username-field formControlName="username"></app-username-field>
+                    </div>
+                    <div class="user-form-field">
+                       <app-birthday-field formControlName="birthday"></app-birthday-field>
+                    </div>
+                </form> 
+            </div>
+        </ng-container>
+        <div class="user-form-card add-card" (click)="addUserForm()">
+            <div class="add-card-center">+</div>
+        </div>
+    </ng-container>
+   
+</div>

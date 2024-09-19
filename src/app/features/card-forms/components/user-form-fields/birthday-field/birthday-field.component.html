@@ -1,0 +1,17 @@
+
+<div class="form-field-label">
+    <label for="dp">Birthday</label>
+</div>
+<div class="form-field input-group">
+    <input
+    class="form-control"
+    placeholder="yyyy-mm-dd"
+    name="dp"
+    ngbDatepicker
+    #birthday="ngbDatepicker"
+    (blur)="blur()"
+    (change)="change($event)"
+    (dateSelect)="onDateSelect($event)"
+    />
+    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="birthday.toggle()" type="button"></button>
+</div>

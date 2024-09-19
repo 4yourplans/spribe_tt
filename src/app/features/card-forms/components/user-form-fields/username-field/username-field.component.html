@@ -1,0 +1,14 @@
+<div class="form-field-label">
+    <label for="username">Username</label>
+</div>
+<div class="form-field">
+    <input
+    #username
+    appFormControlValidation
+    id="user-name"
+    name="username"
+    type="text"
+    class="form-control user-name"
+    (change)="change($event)"
+    />
+</div>

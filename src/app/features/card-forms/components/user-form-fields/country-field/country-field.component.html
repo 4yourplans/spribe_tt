@@ -1,0 +1,19 @@
+<div class="form-field-label">
+    <label for="country">Country</label>
+</div>
+<div class="form-field">
+    <input
+    #country
+    appFormControlValidation
+    id="typeahead-template"
+    name="country"
+    type="text"
+    class="form-control country"
+    [ngbTypeahead]="search"
+    [inputFormatter]="formatter"
+    [resultFormatter]="formatter"
+    [selectOnExact]="true"
+    (change)="change($event)"
+    (blur)="blur()"
+    />
+</div>
